@@ -1,15 +1,8 @@
 #!/bin/bash
-# new Env('BBK-击鼓红包助力');
+# new Env('BBK-wskey转换');
+# cron 0 0/12 * * * a_wskey_convert.sh
 # export JD_LOG_XYZ_TOKEN="从机器人获取的token"
-# export Proxy_Url="代理网址 例如：星空、熊猫 生成选择txt 一次一个"
-# export JIGU_SUSSCESS_COUNT="10" #助力次数，必须设置才能跑
-# export JIGU_PINS="指定pin助力，多个用英文&分割"
-# export JIGU_CK_START_INDEX="10"  #从第10个号开始助力 可选参数,可以不填。
-# export JIGU_DELAY="2" # 助力等待多少秒 默认0秒 可选参数,可以不填。
-# export JIGU_USE_PROXY="true" #强制使用代理 默认不用代理 可选参数,可以不填。
-# export JIGU_BAN_PINS="123&456" #这里指定的pin将不助力(黑名单) 多个&分开
-# 1.先设置助力次数，再设置助力pin或链接
-# 2.支持PIN或者链接方式(`jigu_list.txt`存放需要助力的URL,一行一个)
+# export BBK_WSKEY_ENC_KEY="" #加密/解密key，启用加密的时候需要用到
 pwd
 _ftype=""
 use_get_arch=${BBK_ARCH}
@@ -40,7 +33,7 @@ else
     if [ -f "$PWD/BBK/$_ftype.bbk" ]; then
         echo "$PWD/BBK/$_ftype.bbk"
         eval "chmod +x ./BBK/$_ftype.bbk"
-        eval "./BBK/$_ftype.bbk -t jigu_help"
+        eval "./BBK/$_ftype.bbk -t wskey_convert"
     else
         if [ ! -f "$PWD/$_ftype.bbk" ]; then
             echo "在$PWD/BBK目录、$PWD目录下均未找到文件$_ftype.bbk"
@@ -48,6 +41,6 @@ else
         fi
         echo "$PWD/$_ftype.bbk"
         eval "chmod +x $PWD/$_ftype.bbk"
-        eval "$PWD/$_ftype.bbk -t jigu_help"
+        eval "$PWD/$_ftype.bbk -t wskey_convert"
     fi
 fi
