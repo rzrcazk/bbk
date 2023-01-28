@@ -2,6 +2,7 @@
 # new Env('BBK-wskey失效');
 # export JD_LOG_XYZ_TOKEN="从机器人获取的token"
 # export BBK_WSKEY_ENC_KEY="" #加密/解密key，启用加密的时候需要用到
+# export USE_BBK_WSKEY_EXIT="true" #启用退出，防止添加任务就自动执行，执行完毕后记得关闭
 pwd
 _ftype=""
 use_get_arch=${BBK_ARCH}
