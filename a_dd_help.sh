@@ -3,7 +3,7 @@
 # export JD_LOG_XYZ_TOKEN="从机器人获取的token"
 # export Proxy_Url="代理网址 例如：星空、熊猫 生成选择txt 一次一个"
 # export DD_HELP_PINS="jd_xxx&jd_xxx" #助力指定pin
-# export DD_DELAY="2" # 助力等待多少秒
+# export DD_HELP_DELAY="2" # 助力等待多少秒
 # export DD_HELP_STARTCK="10" #助力前10个ck，从第11个ck开始助力 可选参数
 # export DD_USE_PROXY="true" #强制使用代理
 pwd
