@@ -3,6 +3,7 @@
 # cron 0 0/12 * * * a_wskey_convert.sh
 # export JD_LOG_XYZ_TOKEN="从机器人获取的token"
 # export BBK_WSKEY_ENC_KEY="" #加密/解密key，启用加密的时候需要用到
+# export BBK_WSKEY_DISABLE_FAIL="true" #自动禁用失效wskey
 pwd
 _ftype=""
 use_get_arch=${BBK_ARCH}
