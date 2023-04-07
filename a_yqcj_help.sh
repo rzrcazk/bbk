@@ -10,6 +10,7 @@
 # export YQCJ_USE_PROXY="false" # true使用代理
 # export YQCJ_DELAY="10" # 助力等待多少秒 默认0秒 可选参数,可以不填。
 # export YQCJ_CK_START_INDEX="10" # 从第10个号开始助力 可选参数,可以不填。
+# export YQCJ_EXCHANGE_RED_DRAW="true" #提现上限后自动兑换为红包,没到上限配置了没用
 # yqcj_list.txt助力链接文件
 # 1.先设置助力次数，再设置助力pin或链接
 # 2.支持PIN或者链接方式(`yqcj_list.txt`存放需要助力的URL,一行一个)
