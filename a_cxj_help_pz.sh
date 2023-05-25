@@ -9,6 +9,7 @@
 # export CXJ_PZ_BAN_PINS="jd_xxx&jd_xxx" #跳过黑号pin
 # export CXJ_MCK="true" #启用MCK，默认禁用MCK
 # export CXJ_PZ_USE_PROXY="true" #强制使用代理 默认不用代理 可选参数,可以不填。
+# export CXJ_PZ_IGNORE_403_ERROR="true" #运行环境异常不会自动退出!!!
 # 支持 膨胀助力码(CXJ_PZ_INVITE_CODES) 或 pin(CXJ_HELP_PZ_PINS) 或者 链接方式(`cxj_pz_list.txt`存放需要助力的URL,一行一个)
 pwd
 _ftype=""
