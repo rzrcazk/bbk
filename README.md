@@ -1,20 +1,115 @@
-# bbk_bak
-bbk bak
+# tbk-淘宝客返利系统（nodejs v16）
 
-### 本仓库之中所有脚本以及配置纯属自用备份
-## 免责声明
+## 现有功能  
 
-BBK 发布的本仓库中涉及的任何解锁和解密分析脚本仅用于资源共享和学习研究，不能保证其合法性，准确性，完整性和有效性，请根据情况自行判断.
+* 支持 淘宝、京东、拼多多转链([转链服务源码](/tbk-api-server/README.md)) ([api测试链接](https://tbk-api.xumeng.host/?url=%E3%80%90%E6%B7%98%E5%AE%9D%E3%80%91https://m.tb.cn/h.UKRgdJO?tk=Aa0UdRum9Sd%20CZ3457%20%E3%80%8C%E4%B8%80%E6%AC%A1%E6%80%A7%E9%A5%BA%E5%AD%90%E7%9B%92%E5%A4%96%E5%8D%96%E4%B8%93%E7%94%A8%E9%A4%90%E7%9B%92%E5%95%86%E7%94%A8%E9%80%9F%E5%86%BB%E6%B0%B4%E9%A5%BA%E7%9B%92%E9%A6%84%E9%A5%A8%E6%89%93%E5%8C%85%E7%9B%92%E5%88%86%E6%A0%BC%E5%8C%85%E8%A3%85%E7%9B%92%E5%AD%90%E3%80%8D%20%E7%82%B9%E5%87%BB%E9%93%BE%E6%8E%A5%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%20%E6%88%96%E8%80%85%20%E6%B7%98%E5%AE%9D%E6%90%9C%E7%B4%A2%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80))
+* 微信bot(是微信，不是公众号，当然公众号也实现了的)自动回复消息 转链、绑定订单(基于wechaty) ([微信bot源码](/wechat/README.md))
+* 返利系统订单管理后台（vue2、element-ui、express、mongoose...）(已开源) ([管理后台](https://github.com/pea-cake/tbk-manage.git))
+* ...
 
-间接使用脚本的任何用户，包括但不限于建立VPS或在某些行为违反国家/地区法律或相关法规的情况下进行传播, BBK 对于由此引起的任何隐私泄漏或其他后果概不负责.
+## 如何运行和部署
 
-请勿将本仓库内的任何内容用于商业或非法目的，否则后果自负.
+### 运行
 
-如果任何单位或个人认为该项目的脚本可能涉嫌侵犯其权利，则应及时通知并提供身份证明，所有权证明，我将在收到认证文件后删除相关脚本.
+1. 配置（./config/index.js） 阿里联盟、京东联盟、多多客 返佣账号appkey appsecret
 
-BBK 对任何本仓库中包含的脚本在使用中可能出现的问题概不负责，包括但不限于由任何脚本错误导致的任何损失或损害.
+    ```text
+    JDconfig: {
+        // 京东联盟
+        appKey: "",
+        appSecret: "",
+    },
+    TBconfig: {
+        // 阿里联盟, 获取配置看这里https://github.com/pea-cake/tbk/issues/5
+        appkey: "",
+        appsecret: "",
+        adzone_id: "", // 推广位pid 'mm_123_456_789' 的789就是adzone_id
+    },
+    PDDconfig: {
+        // 多多客
+        clientId: "",
+        clientSecret: "",
+        pid: "", // 推广位pid
+    }
+    ```
 
-您必须在下载后的24小时内从计算机或手机中完全删除以上内容.
+2. 安装mongodb数据库（自行查找方法）  
 
-任何以任何方式查看此项目的人或直接或间接使用该项目的任何脚本的使用者都应仔细阅读此声明。BBK 保留随时更改或补充此免责声明的权利。一旦使用并复制了任何本仓库相关脚本或其他内容，则视为您已接受此免责声明.
-### 本仓库之中所有脚本配置纯属自用备份
+3. 安装node环境（自行查找方法）  
+
+4. 安装所需包  
+
+    ```bash
+    npm i
+    ```
+
+5. 运行转链api服务  
+
+    ```bash
+    npm run server
+    ```
+
+6. 另启动一个终端，运行微信bot服务  
+
+    ```bash
+    npm run wechat
+    ```
+
+7. 扫码登录微信即可
+8. 还可使用pm2 运行
+
+    ```bash
+    npm install pm2 -g
+    pm2 start tbk-api-server/index.js
+    pm2 start wechat/index.js
+    ```
+
+### 部署
+
+## docker
+
+1. 已经安装docker
+2. 完成配置（config/index.js）
+3.  
+    * DockerFile  
+
+    ```bash
+    docker build -t tbk:v1 .
+    docker run -it tbk:v1 /bin/bash
+    ```
+
+    * docker远程仓库  
+
+    ```bash
+    docker pull peacaker/tbk:1.0.0
+    docker run -it peacaker/tbk:1.0.0 /bin/bash
+    ```
+
+4. 扫码登录微信即可
+
+## 🧐🧐🧐
+
+* 这是一个能赚点小钱，即使不能赚钱，也能方便你省钱的系统  
+* 已全部开源，欢迎使用，欢迎star，也期待你的添砖加瓦
+* ...
+
+## 体验
+1. 转链api体验：https://tbk-api.xumeng.host/?url=商品链接.  
+2. 微信扫码(风控暂时停用，可能由于玩chatgpt多了):  
+<img src="https://user-images.githubusercontent.com/58544092/187089988-28c60792-83e5-4611-bde9-7ff3cfe93aec.jpg" width="200px" height="200px"/>  
+
+## 展示  
+
+微信消息部分：  
+<img src="https://user-images.githubusercontent.com/58544092/185220186-c013651e-0640-4c22-95d6-15bf7f0de059.png" width="200px" height="400px"/> <img src="https://user-images.githubusercontent.com/58544092/185220657-78e275ed-1f36-49b6-a2f5-4dcd0c60f141.png" width="200px" height="400px"/> <img src="https://user-images.githubusercontent.com/58544092/185222647-693ffcb3-431d-4c73-bce9-7006764d65f2.png" width="200px" height="400px"/>  
+
+管理系统截图：  
+
+![image](https://user-images.githubusercontent.com/58544092/197322244-3db634f8-fdce-491c-8339-6ea9bdfdab75.png)
+
+![image](https://user-images.githubusercontent.com/58544092/197322205-74d8f0e6-9798-43c9-af7b-a567a3144fde.png)
+...
+
+## 感谢
+
+* 待添加
