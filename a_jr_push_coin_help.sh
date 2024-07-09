@@ -6,6 +6,7 @@
 # export JR_PUSH_COINS_SUSSCESS_COUNT="10" # 助力次数 默认10
 # export JR_PUSH_COINS_CK_START_INDEX="10"  #从第10个号开始助力 可选参数,可以不填。
 # export JR_PUSH_COINS_TASK_USE_PROXY="false" # true使用代理, 默认不用代理,可选参数,可以不填。
+# export JR_PUSH_COINS_ONE_CK_ONE_IP="true" # true 1ck1代理ip,默认不用
 # 1.请先设置助力pin
 # 2.支持PIN或者链接方式(`jr_push_coins_list.txt`存放需要助力的URL,一行一个)
 pwd
